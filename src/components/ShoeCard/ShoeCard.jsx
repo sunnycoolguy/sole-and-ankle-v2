@@ -35,6 +35,7 @@ const ShoeCard = ({
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
+        <Flag variant={variant}>{`${variant === 'new-release' ? 'Just Released!' : 'Sale'}`}</Flag>
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
@@ -53,15 +54,34 @@ const ShoeCard = ({
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
+  flex-basis: 370px;
+  flex-grow: 1;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+  width: 100%;
+`;
 
 const ImageWrapper = styled.div`
+  width: 100%;
   position: relative;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  width: 100%;
+`;
+
+const Flag = styled.p`
+  display: ${props => props.variant === 'default' ? 'none' : 'initial'};
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  color: ${COLORS.white};
+  background-color: ${props => props.variant === 'new-release' ? COLORS.secondary : COLORS.primary };
+  font-weight: ${WEIGHTS.bold};
+  border-radius: 2px;
+  padding: 10px;
+`
 
 const Row = styled.div`
   font-size: 1rem;
