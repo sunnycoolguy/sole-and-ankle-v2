@@ -28,7 +28,8 @@ const Wrapper = styled.div`
   background-color: ${COLORS.gray[900]};
   display: flex;
   gap: 24px;
-  padding-block: 12px;
+  align-items: center;
+  height: 40px;
   padding-inline: 32px;
 `;
 
