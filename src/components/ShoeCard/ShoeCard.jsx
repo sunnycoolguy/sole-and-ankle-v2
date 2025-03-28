@@ -54,16 +54,14 @@ const ShoeCard = ({
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  flex-basis: 370px;
+  flex-basis: 344px;
   flex-grow: 1;
 `;
 
 const Wrapper = styled.article`
-  width: 100%;
 `;
 
 const ImageWrapper = styled.div`
-  width: 100%;
   position: relative;
 `;
 
