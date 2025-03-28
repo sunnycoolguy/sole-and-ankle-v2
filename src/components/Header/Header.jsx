@@ -39,7 +39,6 @@ const MainHeader = styled.div`
 
 const Nav = styled.nav`
   display: flex;
-  flex: 2;
 `;
 
 const LogoWrapper = styled.div`
