@@ -23,7 +23,7 @@ const Header = () => {
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
         </Nav>
-        <Spacer/>
+        <Side/>
       </MainHeader>
     </header>
   );
@@ -34,21 +34,20 @@ const MainHeader = styled.div`
   border-bottom: 1px solid ${COLORS.gray[300]};
   display: flex;
   align-items: center;
+  height: 4.5rem;
 `;
 
 const Nav = styled.nav`
-  flex: 2;
   display: flex;
-  justify-content: space-between;
+  flex: 2;
 `;
 
 const LogoWrapper = styled.div`
   flex: 1;
 `
 
-const Spacer = styled.div`
+const Side = styled.div`
   flex: 1;
-  height: 72px;
 `
 
 const NavLink = styled.a`
@@ -57,6 +56,7 @@ const NavLink = styled.a`
   text-decoration: none;
   color: ${COLORS.gray[900]};
   font-weight: ${WEIGHTS.medium};
+  margin-inline: 48px;
 
   &:first-of-type {
     color: ${COLORS.secondary};
