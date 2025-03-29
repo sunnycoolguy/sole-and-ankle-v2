@@ -31,17 +31,25 @@ const ShoeCard = ({
       ? 'new-release'
       : 'default'
 
+  const priceStyles = {
+    '--color' : typeof salePrice === 'number' ? `${COLORS.gray[700]}`  : 'inherit',
+    '--text-decoration' : typeof salePrice === 'number' ? 'line-through' : 'initial' 
+  };
+
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
-        <Flag variant={variant}>{`${variant === 'new-release' ? 'Just Released!' : 'Sale'}`}</Flag>
+          <Flag variant={variant}>{`${variant === 'new-release' ? 'Just Released!' : 'Sale'}`}</Flag>
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          <PriceWrapper>
+            <Price style={priceStyles}>{formatPrice(price)}</Price>
+            {typeof salePrice === 'number' && <SalePrice>{formatPrice(salePrice)}</SalePrice>}
+          </PriceWrapper>
         </Row>
         <Row>
           <ColorInfo>{pluralize('Color', numOfColors)}</ColorInfo>
@@ -63,6 +71,7 @@ const Wrapper = styled.article`
 
 const ImageWrapper = styled.div`
   position: relative;
+  border-radius: 16px 16px 4px 4px;
 `;
 
 const Image = styled.img`
@@ -76,6 +85,7 @@ const Flag = styled.p`
   right: -4px;
   color: ${COLORS.white};
   background-color: ${props => props.variant === 'new-release' ? COLORS.secondary : COLORS.primary };
+  font-size: ${14 / 16}rem;
   font-weight: ${WEIGHTS.bold};
   border-radius: 2px;
   padding: 10px;
@@ -83,6 +93,8 @@ const Flag = styled.p`
 
 const Row = styled.div`
   font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Name = styled.h3`
@@ -90,15 +102,25 @@ const Name = styled.h3`
   color: ${COLORS.gray[900]};
 `;
 
-const Price = styled.span``;
-
-const ColorInfo = styled.p`
-  color: ${COLORS.gray[700]};
+const Price = styled.span`
+  color: var(--color);
+  text-decoration: var(--text-decoration);
 `;
 
 const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
 `;
+
+
+const PriceWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ColorInfo = styled.p`
+  color: ${COLORS.gray[700]};
+`;
+
 
 export default ShoeCard;
